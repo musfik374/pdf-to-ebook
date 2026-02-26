@@ -57,3 +57,20 @@ renderPage(pageNum)
 function toggleDark(){
 document.body.classList.toggle("dark")
 }
+let startX = 0
+
+canvas.addEventListener("touchstart", e=>{
+startX = e.touches[0].clientX
+})
+
+canvas.addEventListener("touchend", e=>{
+let endX = e.changedTouches[0].clientX
+
+if(endX < startX){
+nextPage()
+}
+
+if(endX > startX){
+prevPage()
+}
+})
